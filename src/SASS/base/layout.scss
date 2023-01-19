@@ -1,0 +1,20 @@
+@use './utils' as u;
+
+body {
+	background-color: var(--clr-p-400);
+
+	@include u.breakpoint(md) {
+	}
+
+	@include u.breakpoint(lg) {
+	}
+}
+
+.content {
+	width: min(87.2%, 1110px);
+	margin-inline: auto;
+
+	@include u.breakpoint(md) {
+		width: min(89.713542%, 1110px);
+	}
+}
