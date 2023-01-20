@@ -119,6 +119,19 @@ footer {
 				gap: 1rem;
 				justify-content: center;
 				align-items: center;
+
+				li a {
+					svg {
+						transition: fill var(--trans-dur);
+						fill: var(--clr-n-100);
+					}
+
+					&:hover {
+						svg {
+							fill: var(--clr-p-100);
+						}
+					}
+				}
 			}
 		}
 
@@ -138,19 +151,6 @@ footer {
 
 			.socials {
 				margin-left: auto;
-
-				ul li a {
-					svg {
-						transition: fill var(--trans-dur);
-						fill: var(--clr-n-100);
-					}
-
-					&:hover {
-						svg {
-							fill: var(--clr-p-100);
-						}
-					}
-				}
 			}
 		}
 
