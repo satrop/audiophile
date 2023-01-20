@@ -18,3 +18,13 @@ body {
 		width: min(89.713542%, 1110px);
 	}
 }
+
+.body-flow {
+	> *:where(:not(:first-child)) {
+		margin-top: 7.5rem;
+
+		@include u.breakpoint(lg) {
+			margin-top: 10rem;
+		}
+	}
+}

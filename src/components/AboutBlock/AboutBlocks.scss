@@ -1,0 +1,44 @@
+@use '../../SASS/base/utils' as u;
+
+.about-block {
+	display: grid;
+	grid-auto-columns: 1fr 1fr;
+	grid-template-areas:
+		'image'
+		'text';
+	text-align: center;
+
+	span {
+		color: var(--clr-p-100);
+	}
+
+	&__image {
+		grid-area: image;
+		margin-bottom: 2.5rem;
+	}
+
+	&__text {
+		grid-area: text;
+
+		.header {
+			margin-bottom: 2rem;
+		}
+	}
+
+	@include u.breakpoint(md) {
+		&__image {
+			margin-bottom: 3.938rem;
+		}
+	}
+
+	@include u.breakpoint(lg) {
+		align-items: center;
+		grid-template-areas: 'text image';
+		text-align: left;
+		gap: 13.75rem;
+
+		&__image {
+			margin-bottom: unset;
+		}
+	}
+}
