@@ -11,6 +11,8 @@ import Headphones from './pages/Headphones';
 import Speakers from './pages/Speakers';
 import Earphones from './pages/Earphones';
 
+import Footer from './components/Footer/Footer';
+
 function App() {
 	return (
 		<CartProvider>
@@ -28,6 +30,7 @@ function App() {
 					/>
 					<Route path="/checkout" element={<Checkout />} />
 				</Routes>
+				<Footer />
 			</HashRouter>
 		</CartProvider>
 	);

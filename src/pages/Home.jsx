@@ -7,7 +7,6 @@ const Home = () => {
 		<main>
 			<div className="content">
 				<h1>Home</h1>
-				<SectionLinks />
 			</div>
 		</main>
 	);

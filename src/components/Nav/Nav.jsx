@@ -53,7 +53,7 @@ const Nav = () => {
 					</NavLink>
 				</div>
 			</div>
-			<nav>
+			<nav id="main-nav">
 				<div id="menu" className={active ? 'active' : ''}>
 					<div className="content">
 						<SectionLinks handleClick={closeMenu} />

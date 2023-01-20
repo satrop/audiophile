@@ -1,0 +1,178 @@
+@use '../../SASS/base/utils' as u;
+
+footer {
+	background-color: var(--clr-n-200);
+	color: var(--clr-n-100);
+	margin-top: 6.25rem;
+	padding-top: 3.25rem;
+	padding-bottom: 2.375rem;
+
+	.content.flow {
+		position: relative;
+		--flow-space: 3rem;
+		display: grid;
+		justify-content: center;
+		text-align: center;
+		grid-auto-columns: 1fr 1fr;
+		grid-template-areas:
+			'logo'
+			'navigation'
+			'paragraph'
+			'copyright'
+			'socials';
+
+		.logo {
+			grid-area: logo;
+			margin-inline: auto;
+			position: relative;
+
+			@include u.breakpoint(md) {
+				margin-inline: unset;
+			}
+		}
+
+		&::after {
+			position: absolute;
+			content: '';
+			width: 100px;
+			height: 4px;
+			background-color: var(--clr-p-100);
+			top: -3.25rem;
+			left: 50%;
+			transform: translateX(-50%);
+
+			@include u.breakpoint(md) {
+				left: 0;
+				transform: none;
+			}
+		}
+
+		.footer-nav {
+			grid-area: navigation;
+
+			ul {
+				display: flex;
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				flex-direction: column;
+
+				> *:where(:not(:first-child)) {
+					margin-top: 1rem;
+				}
+
+				li {
+					a {
+						color: var(--clr-n-100);
+						text-decoration: none;
+						text-transform: uppercase;
+						font-weight: 700;
+						font-size: 0.813rem;
+						letter-spacing: 0.125rem;
+					}
+				}
+
+				@include u.breakpoint(md) {
+					flex-direction: row;
+					gap: 2.125rem;
+
+					> *:where(:not(:first-child)) {
+						margin-top: unset;
+					}
+
+					li a {
+						transition: color var(--trans-dur);
+
+						&:hover {
+							color: var(--clr-p-100);
+						}
+					}
+				}
+			}
+
+			@include u.breakpoint(lg) {
+				margin-left: auto;
+			}
+		}
+
+		.paragraph {
+			grid-area: paragraph;
+		}
+
+		.copyright {
+			grid-area: copyright;
+		}
+
+		.paragraph,
+		.copyright {
+			opacity: 0.5;
+		}
+
+		.socials {
+			grid-area: socials;
+
+			ul {
+				display: flex;
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				gap: 1rem;
+				justify-content: center;
+				align-items: center;
+			}
+		}
+
+		@include u.breakpoint(md) {
+			--flow-space: 2rem;
+			text-align: left;
+			grid-template-areas:
+				'logo .'
+				'navigation navigation'
+				'paragraph paragraph'
+				'copyright socials';
+
+			.copyright,
+			.socials {
+				margin-top: 5rem;
+			}
+
+			.socials {
+				margin-left: auto;
+
+				ul li a {
+					svg {
+						transition: fill var(--trans-dur);
+						fill: var(--clr-n-100);
+					}
+
+					&:hover {
+						svg {
+							fill: var(--clr-p-100);
+						}
+					}
+				}
+			}
+		}
+
+		@include u.breakpoint(lg) {
+			--flow-space: 0;
+			grid-template-areas:
+				'logo navigation'
+				'paragraph socials'
+				'copyright .';
+
+			.paragraph {
+				padding-right: 0.938rem;
+				margin-top: 2.25rem;
+			}
+
+			.copyright {
+				margin-top: 3.5rem;
+			}
+
+			.socials {
+				margin-top: auto;
+			}
+		}
+	}
+}
