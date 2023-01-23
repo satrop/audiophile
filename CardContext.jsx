@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { productsArray, getProductData } from './assets/data';
+import { productsArray, getProductData } from './src/assets/data';
 
 export const CartContext = createContext({
 	items: [],
@@ -8,7 +8,6 @@ export const CartContext = createContext({
 	removeOneFromCart: () => {},
 	deleteFromCart: () => {},
 	getTotalCost: () => {},
-	deleteAllFromCart: () => {},
 });
 
 export function CartProvider({ children }) {
@@ -71,13 +70,6 @@ export function CartProvider({ children }) {
 			})
 		);
 	}
-	function deleteAllFromCart() {
-		setCartProducts((cartProducts) =>
-			cartProducts.filter((currentProduct) => {
-				return currentProduct != currentProduct;
-			})
-		);
-	}
 
 	function getTotalCost() {
 		let totalCost = 0;
@@ -95,7 +87,6 @@ export function CartProvider({ children }) {
 		removeOneFromCart,
 		deleteFromCart,
 		getTotalCost,
-		deleteAllFromCart,
 	};
 	return (
 		<CartContext.Provider value={contextValue}>

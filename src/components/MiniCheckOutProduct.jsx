@@ -2,7 +2,7 @@ import CheckOutProduct from '../components/CheckOutProduct';
 import { CartContext } from '../CardContext';
 import { useContext } from 'react';
 
-const Checkout = () => {
+const MiniCheckOutProduct = () => {
 	const cart = useContext(CartContext);
 	const productsCount = cart.items.reduce(
 		(sum, product) => sum + product.quantity,
@@ -35,4 +35,4 @@ const Checkout = () => {
 	);
 };
 
-export default Checkout;
+export default MiniCheckOutProduct;
