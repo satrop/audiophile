@@ -1,11 +1,9 @@
 import CheckOutProduct from '../CheckOutProduct/CheckOutProduct';
 import { CartContext } from '../../CardContext';
 import { useContext } from 'react';
-import { getProductData } from '../../assets/data';
 import { Link } from 'react-router-dom';
 
 import './MiniCheckOutProduct.scss';
-import Checkout from '../../pages/Checkout';
 
 const MiniCheckOutProduct = (props) => {
 	const cart = useContext(CartContext);

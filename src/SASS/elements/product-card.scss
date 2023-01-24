@@ -1,0 +1,15 @@
+.product-card {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+
+	picture {
+		margin-bottom: 2rem;
+	}
+
+	.col {
+        display: flex;
+        flex-direction: column;
+		gap: 1.5rem;
+	}
+}

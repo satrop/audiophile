@@ -5,14 +5,28 @@ import AboutBlock from '../components/AboutBlock/AboutBlock';
 import SectionLinks from '../components/SectionLinks/SectionLinks';
 
 const Speakers = () => {
-	const speakers = productsArray.map((speaker, idx) => {
+	const filteredSpeakers = productsArray.map((speaker, idx) => {
 		if (speaker.category.includes('speakers')) {
 			let newProduct;
 			if (speaker.new === true) {
 				newProduct = 'New Thing!';
 			}
+
+			const smImg = speaker.categoryImage.mobile;
+			const mdImg = speaker.categoryImage.tablet;
+			const lgImg = speaker.categoryImage.desktop;
+
 			return (
 				<div key={idx}>
+					<picture>
+						<source srcSet={lgImg} media="(min-width:  90rem)" />
+						<source srcSet={mdImg} media="(min-width:  48rem)" />
+						<img
+							className="border-radius"
+							src={smImg}
+							alt={speaker.name}
+						/>
+					</picture>
 					{newProduct && (
 						<div className="card__badge">{newProduct}</div>
 					)}
@@ -24,8 +38,6 @@ const Speakers = () => {
 		}
 	});
 
-	console.log(speakers);
-
 	return (
 		<main>
 			<div className="page-head">
@@ -34,7 +46,7 @@ const Speakers = () => {
 				</div>
 			</div>
 			<div className="content body-flow">
-				<div>{speakers}</div>
+				<div>{filteredSpeakers}</div>
 				<SectionLinks />
 				<AboutBlock />
 			</div>
