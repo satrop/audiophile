@@ -31,9 +31,12 @@ const Headphones = () => {
 
 	return (
 		<main>
+			<div className="page-head">
+				<div className="content">
+					<h1>Headphones</h1>
+				</div>
+			</div>
 			<div className="content body-flow">
-				<h1>Headphones</h1>
-
 				<div>{filterHeadphones}</div>
 				<SectionLinks />
 				<AboutBlock />

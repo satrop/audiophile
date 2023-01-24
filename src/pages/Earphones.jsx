@@ -29,6 +29,11 @@ const Earphones = () => {
 
 	return (
 		<main>
+			<div className="page-head">
+				<div className="content">
+					<h1>Earphones</h1>
+				</div>
+			</div>
 			<div className="content body-flow">
 				<div>{filterEarphones}</div>
 				<SectionLinks />

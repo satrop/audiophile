@@ -28,6 +28,11 @@ const Speakers = () => {
 
 	return (
 		<main>
+			<div className="page-head">
+				<div className="content">
+					<h1>Speakers</h1>
+				</div>
+			</div>
 			<div className="content body-flow">
 				<div>{speakers}</div>
 				<SectionLinks />

@@ -70,3 +70,35 @@ select {
 		background-color: var(--clr-p-h-100);
 	}
 }
+
+.page-head {
+	background-color: var(--clr-n-200);
+	color: var(--clr-n-100);
+	text-align: center;
+	border-top: 1px solid rgba(#fff, 0.1);
+	margin-bottom: 4rem;
+
+	.content {
+		padding-block: 2rem;
+	}
+}
+
+@media (min-width: 48rem) {
+	.page-head {
+		.content {
+			padding-top: 6.563rem;
+			padding-bottom: 6.063rem;
+		}
+	}
+}
+
+@media (min-width: 90rem) {
+	.page-head {
+		border-top: 0;
+
+		.content {
+			border-top: 1px solid rgba(#fff, 0.2);
+			padding-block: 6.125rem;
+		}
+	}
+}
