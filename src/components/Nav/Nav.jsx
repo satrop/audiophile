@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 
 import SectionLinks from '../SectionLinks/SectionLinks';
-
+import MiniCheckOutProduct from '../MiniCheckOutProduct/MiniCheckOutProduct';
 import menuIcon from '/assets/shared/tablet/icon-hamburger.svg';
 import cartIcon from '/assets/shared/desktop/icon-cart.svg';
 import logo from '/assets/shared/desktop/logo.svg';
@@ -18,8 +18,18 @@ const Nav = () => {
 		setIsPressed(!isPressed);
 	};
 
+	const [cartActive, setCartActive] = useState(false);
+	const [cartFadeActive, setCartFadeActive] = useState(false);
+
+	const cartClick = () => {
+		setCartActive((prevActive) => !prevActive);
+		setCartFadeActive((prevActive) => !prevActive);
+	};
+
 	const closeMenu = () => {
 		setActive(false);
+		setCartActive(false);
+		setCartFadeActive(false);
 	};
 
 	return (
@@ -41,16 +51,16 @@ const Nav = () => {
 							aria-label="Logo linking back to home page"
 						/>
 					</NavLink>
-					<NavLink
-						to="/checkout"
-						className="cart hide-dt"
-						aria-label="View shopping cart">
+					<button className="cart hide-dt" onClick={cartClick}>
 						<img
 							src={cartIcon}
 							alt=""
 							aria-label="Got to checkout"
 						/>
-					</NavLink>
+					</button>
+					<MiniCheckOutProduct do={closeMenu}
+						extraClass={`${cartActive ? 'active' : ''}`}
+					/>
 				</div>
 			</div>
 			<nav id="main-nav">
@@ -61,7 +71,9 @@ const Nav = () => {
 				</div>
 			</nav>
 			<div
-				className={`fade-out ${active ? 'active' : ''}`}
+				className={`fade-out ${active ? 'active' : ''} ${
+					cartFadeActive ? 'active' : ''
+				}`}
 				onClick={closeMenu}></div>
 		</>
 	);

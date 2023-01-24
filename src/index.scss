@@ -54,3 +54,19 @@ textarea,
 select {
 	font: inherit;
 }
+
+.button {
+	text-align: center;
+	display: block;
+	background-color: var(--clr-p-100);
+	color: var(--clr-n-100);
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 700;
+	padding-block: 0.938rem;
+	transition: background-color var(--trans-dur);
+
+	&:hover {
+		background-color: var(--clr-p-h-100);
+	}
+}

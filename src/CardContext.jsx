@@ -9,6 +9,7 @@ export const CartContext = createContext({
 	deleteFromCart: () => {},
 	getTotalCost: () => {},
 	deleteAllFromCart: () => {},
+	getProductQuantityAll: () => {},
 });
 
 export function CartProvider({ children }) {
@@ -71,12 +72,25 @@ export function CartProvider({ children }) {
 			})
 		);
 	}
+
 	function deleteAllFromCart() {
 		setCartProducts((cartProducts) =>
 			cartProducts.filter((currentProduct) => {
 				return currentProduct != currentProduct;
 			})
 		);
+	}
+
+	function getProductQuantityAll() {
+		const quantityAll = cartProducts.find(
+			(product) => product === product
+		)?.quantityAll;
+
+		if (quantityAll === undefined) {
+			return 0;
+		}
+
+		return quantityAll;
 	}
 
 	function getTotalCost() {
@@ -96,6 +110,7 @@ export function CartProvider({ children }) {
 		deleteFromCart,
 		getTotalCost,
 		deleteAllFromCart,
+		getProductQuantityAll,
 	};
 	return (
 		<CartContext.Provider value={contextValue}>

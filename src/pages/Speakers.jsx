@@ -1,7 +1,6 @@
 import { productsArray } from '../assets/data';
 import { Link } from 'react-router-dom';
 
-import MiniCheckOutProduct from '../components/MiniCheckOutProduct';
 import AboutBlock from '../components/AboutBlock/AboutBlock';
 import SectionLinks from '../components/SectionLinks/SectionLinks';
 
@@ -30,9 +29,6 @@ const Speakers = () => {
 	return (
 		<main>
 			<div className="content body-flow">
-				<div>
-					<MiniCheckOutProduct />
-				</div>
 				<div>{speakers}</div>
 				<SectionLinks />
 				<AboutBlock />

@@ -1,4 +1,5 @@
-import CheckOutProduct from '../components/CheckOutProduct';
+// import CheckOutProduct from '../components/CheckOutProduct';
+import CheckOutProduct from '../components/CheckOutProduct/CheckOutProduct';
 import { CartContext } from '../CardContext';
 import { useContext } from 'react';
 

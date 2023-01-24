@@ -1,0 +1,139 @@
+@use '../../SASS/base/utils' as u;
+
+.mini-cart {
+	opacity: 0;
+	pointer-events: none;
+	position: absolute;
+	background-color: var(--clr-n-100);
+	z-index: 1000;
+	top: 100%;
+	left: 0;
+	right: 0;
+	margin-inline: auto;
+	transition: margin-top var(--trans-dur);
+	border-radius: var(--br);
+	padding: 1.57rem;
+	width: min(100%, 23.563rem);
+
+	> *:where(:not(:first-child)) {
+		margin-top: 1.5rem;
+	}
+
+	&__header,
+	.product-total {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.checkout {
+		width: 100%;
+	}
+
+	.mini-cart-layout {
+		display: flex;
+		align-items: center;
+		gap: 0.7rem;
+
+		.product-image {
+			max-width: 64px;
+			aspect-ratio: 1;
+			flex-shrink: 0;
+		}
+
+		.product-controls {
+			display: flex;
+			align-items: center;
+			background-color: var(--clr-p-400);
+			margin-left: auto;
+
+			button {
+				border-radius: 0;
+				border: 0;
+				padding: 0;
+				width: 32px;
+				aspect-ratio: 1;
+				background-color: transparent;
+				color: var(--clr-n-200);
+				opacity: 0.25;
+				transition: call var(--trans-dur);
+				cursor: pointer;
+
+				&:hover {
+					opacity: 1;
+					color: var(--clr-p-100);
+				}
+			}
+
+			.product-quantity {
+				width: 32px;
+				aspect-ratio: 1;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: var(--clr-n-200);
+			}
+		}
+
+		.product-name {
+			font-size: 0.938rem;
+			font-weight: 700;
+			color: var(--clr-n-200);
+			opacity: 1;
+		}
+
+		.product-quantity {
+			span {
+				display: none;
+			}
+		}
+	}
+
+	.product-total {
+		opacity: 1;
+
+		span:nth-child(1) {
+			opacity: 0.5;
+		}
+
+		span:nth-child(2) {
+			font-weight: 700;
+		}
+	}
+
+	.card--cart {
+		.hide-from-mini-cart {
+			display: none;
+		}
+	}
+
+	.mini-remove {
+		border: 0;
+		background-color: transparent;
+		color: var(--clr-n-200);
+		opacity: 0.5;
+		text-decoration: underline;
+		transition: call var(--trans-dur);
+		cursor: pointer;
+
+		&:hover {
+			opacity: 1;
+			color: var(--clr-p-100);
+		}
+	}
+
+	@include u.breakpoint(md) {
+		margin-inline: unset;
+		left: unset;
+	}
+
+	&.active {
+		pointer-events: all;
+		margin-top: 50px;
+		opacity: 1;
+	}
+
+	.total {
+		display: none;
+	}
+}
