@@ -125,7 +125,7 @@ function ProductDetail() {
 								</button>
 							</div>
 							<button
-								className="button"
+								className="button add-to-cart"
 								onClick={() =>
 									cart.addOneToCart(thisProduct.id)
 								}>

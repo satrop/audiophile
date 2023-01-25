@@ -112,13 +112,17 @@ select {
 	}
 }
 
-a {
+a,
+.add-to-cart,
+.button-group .control,
+.socials ul li a {
 	transition: all var(--trans-dur);
-}
 
-a:focus {
-	outline-offset: 10px;
-	outline: dashed;
-	outline-width: 2px;
-	outline-color: var(--clr-p-100);
+	&:focus {
+		outline-offset: 10px;
+		outline: dashed;
+		outline-width: 2px;
+		outline-color: var(--clr-p-100);
+		opacity: 1;
+	}
 }
