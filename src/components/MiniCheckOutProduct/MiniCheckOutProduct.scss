@@ -75,11 +75,13 @@
 			}
 		}
 
-		.product-name {
+		.product-name,
+		.mini-cart-product-name {
 			font-size: 0.938rem;
 			font-weight: 700;
 			color: var(--clr-n-200);
 			opacity: 1;
+			line-height: 1.2;
 		}
 
 		.product-quantity {

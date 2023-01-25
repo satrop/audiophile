@@ -84,32 +84,36 @@ h6,
 	letter-spacing: 0.067em;
 }
 
-@media (min-width: 768px) {
-	h1,
-	.h1 {
-		font-size: 3.5rem;
-		line-height: 3.625rem;
-		letter-spacing: 0.125em;
-	}
-
+@media (min-width: 48rem) {
+	
 	h2,
 	.h2 {
 		font-size: 2.5rem;
 		line-height: 2.75rem;
 		letter-spacing: 0.063em;
 	}
-
+	
 	h3,
 	.h3 {
 		font-size: 2rem;
 		line-height: 2.25rem;
 		letter-spacing: 0.054em;
 	}
-
+	
 	h6,
 	.h6 {
 		font-size: 1.126rem;
 		line-height: 1.25rem;
 		letter-spacing: 0.081em;
+	}
+}
+
+
+@media (min-width: 90rem) {
+	h1,
+	.h1 {
+		font-size: 3.5rem;
+		line-height: 3.625rem;
+		letter-spacing: 0.125em;
 	}
 }

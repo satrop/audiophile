@@ -7,11 +7,22 @@ import SectionLinks from '../components/SectionLinks/SectionLinks';
 import '../SASS/elements/product-card.scss';
 
 const Headphones = () => {
-	const filterHeadphones = productsArray.map((headphone, idx) => {
-		if (headphone.category.includes('headphones')) {
+	function buildProductList(products, category) {
+		const filteredProducts = products.filter(
+			(item) => item.category.toLowerCase() == category.toLowerCase()
+		);
+
+		const isNew = filteredProducts.filter((item) => item.new);
+		const notNew = filteredProducts.filter((item) => !item.new);
+
+		return [...isNew, ...notNew];
+	}
+
+	const filterHeadphones = buildProductList(productsArray, 'headphones').map(
+		(headphone, idx) => {
 			let newProduct;
 			if (headphone.new === true) {
-				newProduct = 'New Thing!';
+				newProduct = 'New product';
 			}
 
 			const smImg = headphone.categoryImage.mobile;
@@ -31,7 +42,7 @@ const Headphones = () => {
 					</picture>
 					<div className="col">
 						{newProduct && (
-							<div className="card__badge">{newProduct}</div>
+							<div className="overline">{newProduct}</div>
 						)}
 						<h1>{headphone.name}</h1>
 						<p>{headphone.description}</p>
@@ -44,7 +55,7 @@ const Headphones = () => {
 				</div>
 			);
 		}
-	});
+	);
 
 	return (
 		<main>
@@ -53,7 +64,7 @@ const Headphones = () => {
 					<h1>Headphones</h1>
 				</div>
 			</div>
-			<div className="content body-flow">
+			<div className="content flow">
 				<div>{filterHeadphones}</div>
 				<SectionLinks />
 				<AboutBlock />

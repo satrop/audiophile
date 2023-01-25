@@ -13,8 +13,6 @@ const MiniCheckOutProduct = (props) => {
 		0
 	);
 
-	const test = props.isOpen ? 'isOpen' : ' ';
-
 	return (
 		<div className={`mini-cart ${props.extraClass}`}>
 			{productsCount > 0 ? (

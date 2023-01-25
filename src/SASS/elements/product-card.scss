@@ -1,15 +1,51 @@
+@use '../../SASS/base/utils' as u;
+
 .product-card {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
+	margin-bottom: 7.5rem;
+	align-items: flex-start;
+
+	.button {
+		align-self: start;
+		margin-inline: auto;
+	}
 
 	picture {
 		margin-bottom: 2rem;
+		margin-inline: auto;
 	}
 
 	.col {
-        display: flex;
-        flex-direction: column;
+		display: flex;
+		flex-direction: column;
 		gap: 1.5rem;
+		width: min(100%, 35.813rem);
+		margin-inline: auto;
+	}
+
+	@include u.breakpoint(md) {
+		flex-direction: row;
+		align-items: center;
+		text-align: left;
+
+		picture {
+			max-width: 34.375rem;
+			margin-right: 7.813rem;
+		}
+
+		.button {
+			margin-inline: unset;
+		}
+
+		&:nth-child(even) {
+			flex-direction: row-reverse;
+
+			picture {
+				margin-left: 7.813rem;
+				margin-right: unset;
+			}
+		}
 	}
 }

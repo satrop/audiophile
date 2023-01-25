@@ -19,6 +19,8 @@
 
 	&__text {
 		grid-area: text;
+		  width: min(100%, 35.813rem);
+        margin-inline: auto;
 
 		.header {
 			margin-bottom: 2rem;

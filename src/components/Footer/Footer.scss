@@ -81,8 +81,6 @@ footer {
 					}
 
 					li a {
-						transition: color var(--trans-dur);
-
 						&:hover {
 							color: var(--clr-p-100);
 						}

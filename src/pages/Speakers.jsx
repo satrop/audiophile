@@ -4,12 +4,25 @@ import { Link } from 'react-router-dom';
 import AboutBlock from '../components/AboutBlock/AboutBlock';
 import SectionLinks from '../components/SectionLinks/SectionLinks';
 
+import '../SASS/elements/product-card.scss';
+
 const Speakers = () => {
-	const filteredSpeakers = productsArray.map((speaker, idx) => {
-		if (speaker.category.includes('speakers')) {
+	function buildProductList(products, category) {
+		const filteredProducts = products.filter(
+			(item) => item.category.toLowerCase() == category.toLowerCase()
+		);
+
+		const isNew = filteredProducts.filter((item) => item.new);
+		const notNew = filteredProducts.filter((item) => !item.new);
+
+		return [...isNew, ...notNew];
+	}
+
+	const filteredSpeakers = buildProductList(productsArray, 'speakers').map(
+		(speaker, idx) => {
 			let newProduct;
 			if (speaker.new === true) {
-				newProduct = 'New Thing!';
+				newProduct = 'New product';
 			}
 
 			const smImg = speaker.categoryImage.mobile;
@@ -17,7 +30,7 @@ const Speakers = () => {
 			const lgImg = speaker.categoryImage.desktop;
 
 			return (
-				<div key={idx}>
+				<div className="product-card" key={idx}>
 					<picture>
 						<source srcSet={lgImg} media="(min-width:  90rem)" />
 						<source srcSet={mdImg} media="(min-width:  48rem)" />
@@ -27,16 +40,20 @@ const Speakers = () => {
 							alt={speaker.name}
 						/>
 					</picture>
-					{newProduct && (
-						<div className="card__badge">{newProduct}</div>
-					)}
-					<h1>{speaker.name}</h1>
-					<p>{speaker.description}</p>
-					<Link to={'/products/' + speaker.id}>{speaker.name}</Link>
+					<div className="col">
+						{newProduct && (
+							<div className="overline">{newProduct}</div>
+						)}
+						<h1>{speaker.name}</h1>
+						<p>{speaker.description}</p>
+						<Link className="button" to={'/products/' + speaker.id}>
+							{speaker.name}
+						</Link>
+					</div>
 				</div>
 			);
 		}
-	});
+	);
 
 	return (
 		<main>

@@ -9,7 +9,7 @@ import './SectionLinks.scss';
 
 const SectionLinks = (props) => {
 	return (
-		<ul className="section-links flow">
+		<ul className="section-links">
 			<li>
 				<Link to="/">
 					<div className="h6">Home</div>

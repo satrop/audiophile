@@ -9,6 +9,9 @@ const CheckOutProduct = (props) => {
 	const productData = getProductData(id);
 	const productQuantity = cart.getProductQuantity(productData.id);
 	const smImg = productData.image.mobile;
+	var shortName = productData.name;
+	var lastIndex = shortName.lastIndexOf(' ');
+	shortName = shortName.substring(0, lastIndex);
 
 	return (
 		<div className="card--cart">
@@ -22,7 +25,10 @@ const CheckOutProduct = (props) => {
 				</div>
 
 				<div className="product-details">
-					<p className="product-name">{productData.name}</p>
+					<p className="hide-from-mini-cart product-name">
+						{productData.name}
+					</p>
+					<p className="mini-cart-product-name">{shortName}</p>
 					<p className="product-price">
 						${productData.price.toFixed(2)}
 					</p>
