@@ -115,6 +115,21 @@
 	}
 }
 
+.product-info {
+	> *:where(:not(:first-child)) {
+		margin-top: var(--flow-space, 5.1rem);
+		
+		@media (min-width: 48rem) {
+			margin-top: var(--flow-space, 7.5rem);
+		}
+		
+		@media (min-width: 90rem) {
+			margin-top: var(--flow-space, 0);
+		}
+	}
+
+}
+
 .product-info--feature,
 .product-info--box {
 	.h3 {

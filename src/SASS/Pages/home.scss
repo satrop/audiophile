@@ -1,0 +1,255 @@
+@use '../../SASS/base/utils' as u;
+
+//Hero
+.hero {
+	background: url('./assets/home/mobile/image-header.jpg') no-repeat center
+		center;
+	aspect-ratio: 1 / 1.6;
+	width: 100%;
+	max-height: 700px;
+	background-size: cover;
+	margin-top: -90px;
+	padding-top: 90px;
+	color: var(--clr-n-100);
+
+	.content {
+		transform: translateY(25%);
+		height: 100%;
+	}
+
+	.inner-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-block: auto;
+		text-align: center;
+		margin-block: auto;
+
+		.overline {
+			color: var(--clr-n-100);
+			opacity: 0.5;
+			font-weight: 400;
+			margin-bottom: 1rem;
+		}
+
+		h1 {
+			margin-bottom: 1.5rem;
+			width: 85%;
+		}
+
+		p {
+			width: min(90%, 23rem);
+		}
+
+		.button {
+			margin-top: 1.75rem;
+		}
+	}
+
+	@include u.breakpoint(md) {
+		background: url('./assets/home/tablet/image-header.jpg') no-repeat
+			center center;
+		aspect-ratio: unset;
+		background-size: 100%;
+		height: 729px;
+		max-height: unset;
+		margin-top: -96px;
+		padding-top: 96px;
+	}
+
+	@include u.breakpoint(lg) {
+		background: url('./assets/home/desktop/image-hero.jpg') no-repeat center
+			bottom;
+		background-size: cover;
+
+		.inner-content {
+			width: 50%;
+			margin-right: auto;
+			text-align: left;
+			align-items: flex-start;
+		}
+	}
+}
+
+.home-products-cards {
+	&.flow {
+		> *:where(:not(:first-child)) {
+			margin-top: var(--flow-space, 1.5rem);
+
+			@include u.breakpoint(md) {
+				margin-top: var(--flow-space, 2rem);
+			}
+
+			@include u.breakpoint(lg) {
+				margin-top: var(--flow-space, 3rem);
+			}
+		}
+	}
+}
+
+//Product Card
+.home-product-card {
+	border-radius: var(--br);
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	&--orange {
+		background-color: var(--clr-p-100);
+		background-image: url('/assets/home/desktop/pattern-circles.svg');
+		background-size: cover;
+		background-position: center -120px;
+		background-repeat: no-repeat;
+		color: var(--clr-n-100);
+		padding: 3.438rem 1.5rem;
+
+		@include u.breakpoint(md) {
+			background-position: center -248px;
+			background-size: 130%;
+		}
+
+		@include u.breakpoint(lg) {
+			flex-direction: row;
+			gap: 8.625rem;
+			padding: 6rem 1.5rem;
+		}
+
+		picture {
+			margin-bottom: 2rem;
+			max-width: 10.813rem;
+
+			@include u.breakpoint(md) {
+				margin-bottom: 4rem;
+				max-width: 12.313rem;
+			}
+
+			@include u.breakpoint(lg) {
+				max-width: 25.625rem;
+				margin-bottom: -113px;
+			}
+		}
+
+		.text-block {
+			align-items: center;
+			text-align: center;
+			width: min(99%, 17.5rem);
+
+			> *:where(:not(:first-child)) {
+				margin-top: var(--flow-space, 1.5rem);
+			}
+
+			@include u.breakpoint(md) {
+				width: min(95%, 23.075rem);
+			}
+
+			@include u.breakpoint(lg) {
+				text-align: left;
+			}
+		}
+
+		.button {
+			margin-inline: auto;
+		}
+	}
+
+	.text-block {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.button {
+		align-self: flex-start;
+
+		&:hover {
+			background-color: var(--clr-p-300);
+		}
+
+		@include u.breakpoint(lg) {
+			margin-inline: unset;
+		}
+	}
+
+	&--two {
+		background-image: url('/assets/home/mobile/image-speaker-zx7.jpg');
+		background-repeat: no-repeat;
+		background-position: right center;
+		background-size: cover;
+		height: 20rem;
+		align-items: flex-start;
+		padding: 1.5rem;
+
+		.text-block {
+			> *:where(:not(:first-child)) {
+				margin-top: var(--flow-space, 1.5rem);
+			}
+
+			.h1 {
+				font-size: 1.75rem;
+			}
+		}
+
+		@include u.breakpoint(md) {
+			background-image: url('/assets/home/tablet/image-speaker-zx7.jpg');
+			padding: 3.875rem;
+		}
+
+		@include u.breakpoint(lg) {
+			background-image: url('/assets/home/desktop/image-speaker-zx7.jpg');
+			padding: 5.938rem;
+		}
+	}
+}
+
+.product-card-wrap {
+	display: grid;
+	gap: 1.5rem;
+	grid-template-areas:
+		'image'
+		'text';
+
+	.text {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		grid-area: text;
+		background-color: var(--clr-p-300);
+		aspect-ratio: 16 / 9.786;
+		padding-inline: 1.5rem;
+
+		@include u.breakpoint(md) {
+			aspect-ratio: 1 / 0.94945;
+		}
+
+		@include u.breakpoint(lg) {
+			aspect-ratio: 16 / 9.4295;
+		}
+
+		.h1 {
+			font-size: 1.75rem;
+		}
+
+		.button {
+			margin-top: 2rem;
+			align-self: flex-start;
+		}
+	}
+
+	.image {
+		grid-area: image;
+	}
+
+	.block {
+		border-radius: var(--br);
+	}
+
+	@include u.breakpoint(md) {
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas: 'image text';
+	}
+
+	@include u.breakpoint(lg) {
+	}
+}

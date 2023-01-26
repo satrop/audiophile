@@ -5,9 +5,10 @@ import SectionLinks from '../components/SectionLinks/SectionLinks';
 
 import { CartContext } from '../CardContext';
 import { useContext } from 'react';
-import { Link, Route } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { productsArray } from '../assets/data';
+
+import GoBack from '../components/GoBack';
 
 import '../SASS/elements/product-details.scss';
 
@@ -80,11 +81,7 @@ function ProductDetail() {
 
 	return (
 		<main>
-			<div className="content">
-				<Link className="back" to="/headphones">
-					Go Back
-				</Link>
-			</div>
+			<GoBack />
 			<div className="product-detail content flow">
 				<div className="product-info--main">
 					<picture>

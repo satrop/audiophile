@@ -9,11 +9,14 @@
 	padding: 0;
 
 	li {
+		margin-top: var(--flow-space, 1rem);
+		@include u.breakpoint(md) {
+			margin-top: 0;
+		}
 		position: relative;
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
-
 		border-radius: var(--br);
 		background: linear-gradient(
 			0deg,
@@ -25,6 +28,11 @@
 
 		&:first-of-type {
 			display: none;
+		}
+
+		&:nth-child(1),
+		&:nth-child(2) {
+			margin-top: 0;
 		}
 
 		&::before,
@@ -93,6 +101,7 @@
 				border-radius: var(--br);
 				animation: fadeIn forwards var(--trans-dur);
 				pointer-events: none;
+				border: solid 4px var(--clr-p-100);
 			}
 
 			span {
@@ -119,10 +128,10 @@
 
 @keyframes fadeIn {
 	from {
-		border: solid 0px var(--clr-p-100);
+		opacity: 0;
 	}
 
 	to {
-		border: solid 4px var(--clr-p-100);
+		opacity: 1;
 	}
 }

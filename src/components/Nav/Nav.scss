@@ -44,6 +44,12 @@
 	}
 }
 
+.home {
+	.nav-bar {
+		background-color: transparent;
+	}
+}
+
 nav#main-nav {
 	background-color: var(--clr-n-200);
 	position: absolute;
