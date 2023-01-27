@@ -311,6 +311,11 @@ body.cart {
 	.button {
 		width: 100%;
 		margin-top: 2rem;
+
+		&:disabled {
+			opacity: 0.2;
+			pointer-events: none;
+		}
 	}
 }
 

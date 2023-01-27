@@ -30,9 +30,21 @@ const Cart = () => {
 		handleSubmit,
 		watch,
 		formState: { errors },
-	} = useForm();
+	} = useForm({
+		mode: 'onTouched',
+	});
 
 	const onSubmit = (data) => console.log(data);
+	const name = watch('name');
+	const email = watch('email');
+	const phone = watch('phone');
+	const address = watch('address');
+	const zip = watch('zip');
+	const city = watch('city');
+	// const eNumber = watch('eNumber');
+	// const pin = watch('pin');
+
+	const isValid = name && email && phone && address && zip && city;
 
 	const [status, setStatus] = useState(0);
 
@@ -389,6 +401,7 @@ const Cart = () => {
 										type="submit"
 										value="Continue & pay"
 										onClick={paymentClick}
+										disabled={!isValid}
 									/>
 								</>
 							) : (
