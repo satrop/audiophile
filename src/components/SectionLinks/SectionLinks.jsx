@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-import headphones from '/assets/shared/desktop/image-category-thumbnail-headphones.png';
-import speakers from '/assets/shared/desktop/image-category-thumbnail-speakers.png';
-import earphones from '/assets/shared/desktop/image-category-thumbnail-earphones.png';
+import headphones from '/assets/other/desktop/image-category-thumbnail-headphones.png';
+import speakers from '/assets/other/desktop/image-category-thumbnail-speakers.png';
+import earphones from '/assets/other/desktop/image-category-thumbnail-earphones.png';
 
 import './SectionLinks.scss';
 

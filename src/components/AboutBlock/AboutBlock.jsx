@@ -1,6 +1,6 @@
-import lg from '/public/assets/shared/desktop/image-best-gear.jpg';
-import md from '/public/assets/shared/tablet/image-best-gear.jpg';
-import sm from '/public/assets/shared/mobile/image-best-gear.jpg';
+import lg from '/assets/other/desktop/image-best-gear.jpg';
+import md from '/assets/other/tablet/image-best-gear.jpg';
+import sm from '/assets/other/mobile/image-best-gear.jpg';
 
 import './AboutBlocks.scss';
 

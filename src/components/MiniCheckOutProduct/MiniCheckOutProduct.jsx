@@ -37,7 +37,7 @@ const MiniCheckOutProduct = (props) => {
 						<span>${cart.getTotalCost().toFixed(2)}</span>
 					</p>
 					<Link
-						to="/checkout"
+						to="/cart"
 						onClick={props.do}
 						className="checkout button">
 						Checkout

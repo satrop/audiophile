@@ -6,7 +6,8 @@ import Nav from './components/Nav/Nav';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
-import Checkout from './pages/CheckOut';
+// import Checkout from './pages/CheckOut';
+import Cart from './pages/Cart';
 import Headphones from './pages/Headphones';
 import Speakers from './pages/Speakers';
 import Earphones from './pages/Earphones';
@@ -28,7 +29,7 @@ function App() {
 						path="/products/:productId"
 						element={<ProductDetail />}
 					/>
-					<Route path="/checkout" element={<Checkout />} />
+					<Route path="/cart" element={<Cart />} />
 				</Routes>
 				<Footer />
 			</HashRouter>

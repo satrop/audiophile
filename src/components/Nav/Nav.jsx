@@ -3,9 +3,9 @@ import { useState } from 'react';
 
 import SectionLinks from '../SectionLinks/SectionLinks';
 import MiniCheckOutProduct from '../MiniCheckOutProduct/MiniCheckOutProduct';
-import menuIcon from '/assets/shared/tablet/icon-hamburger.svg';
-import cartIcon from '/assets/shared/desktop/icon-cart.svg';
-import logo from '/assets/shared/desktop/logo.svg';
+import menuIcon from '/assets/other/tablet/icon-hamburger.svg';
+import cartIcon from '/assets/other/desktop/icon-cart.svg';
+import logo from '/assets/other/desktop/logo.svg';
 
 import './Nav.scss';
 
@@ -58,7 +58,8 @@ const Nav = () => {
 							aria-label="Got to checkout"
 						/>
 					</button>
-					<MiniCheckOutProduct do={closeMenu}
+					<MiniCheckOutProduct
+						do={closeMenu}
 						extraClass={`${cartActive ? 'active' : ''}`}
 					/>
 				</div>
