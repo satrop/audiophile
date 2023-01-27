@@ -9,6 +9,7 @@ import CheckOutProduct from '../components/CheckOutProduct/CheckOutProduct';
 import codIcon from '/assets/checkout/icon-cash-on-delivery.svg';
 
 import '../SASS/Pages/cart.scss';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
 	useEffect(() => {
@@ -32,12 +33,24 @@ const Cart = () => {
 	} = useForm();
 
 	const onSubmit = (data) => console.log(data);
-	// console.log(watch('firstName'));
 
 	const [status, setStatus] = useState(0);
 
 	const radioHandler = (status) => {
 		setStatus(status);
+	};
+
+	const shipping = 50;
+	let taxRate = 20;
+
+	const [payment, setPayment] = useState(false);
+
+	const paymentClick = () => {
+		setPayment((prevActive) => !prevActive);
+	};
+
+	const closePayment = () => {
+		setPayment(false);
 	};
 
 	return (
@@ -63,17 +76,10 @@ const Cart = () => {
 													This field is required
 												</p>
 											)}
-											{errors?.name?.type ===
-												'pattern' && (
-												<p className="error-message">
-													Alphabetical characters only
-												</p>
-											)}
 										</div>
 										<input
 											{...register('name', {
 												required: true,
-												pattern: /^[A-Za-z]+$/i,
 											})}
 											type="text"
 											aria-invalid={
@@ -126,18 +132,10 @@ const Cart = () => {
 													This field is required
 												</p>
 											)}
-											{errors?.phone?.type ===
-												'pattern' && (
-												<p className="error-message">
-													Wrong format
-												</p>
-											)}
 										</div>
 										<input
 											{...register('phone', {
 												required: true,
-												pattern:
-													/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
 											})}
 											type="phone"
 											aria-invalid={
@@ -233,18 +231,10 @@ const Cart = () => {
 													This field is required
 												</p>
 											)}
-											{errors?.phone?.type ===
-												'pattern' && (
-												<p className="error-message">
-													Wrong format
-												</p>
-											)}
 										</div>
 										<input
 											{...register('phone', {
 												required: true,
-												pattern:
-													/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
 											})}
 											type="phone"
 											aria-invalid={
@@ -256,27 +246,27 @@ const Cart = () => {
 							</div>
 							<div className="form-section form-section--payments">
 								<div className="overline">Payments</div>
-								{/* <div className="options"> */}
-									<label className="form-element--radio form-element--radio--1">
-										<input
-											type="radio"
-											name="radio"
-											checked={status === 1}
-											onChange={(e) => radioHandler(1)}
-										/>
-										<span>e-Money</span>
-									</label>
-									<label className="form-element--radio form-element--radio--2">
-										<input
-											type="radio"
-											name="radio"
-											checked={status === 2}
-											onChange={(e) => radioHandler(2)}
-										/>
-										<span>Cash on Delivery</span>
-									</label>
-									{status === 1 && (
-										<div className="e-money-option">
+								<label className="form-element--radio form-element--radio--1">
+									<input
+										type="radio"
+										name="radio"
+										checked={status === 1}
+										onChange={(e) => radioHandler(1)}
+									/>
+									<span>e-Money</span>
+								</label>
+								<label className="form-element--radio form-element--radio--2">
+									<input
+										type="radio"
+										name="radio"
+										checked={status === 2}
+										onChange={(e) => radioHandler(2)}
+									/>
+									<span>Cash on Delivery</span>
+								</label>
+								{status === 1 && (
+									<div className="e-money-option">
+										<div className="split">
 											<div
 												className={`form-element ${
 													errors.eNumber
@@ -307,7 +297,6 @@ const Cart = () => {
 													}
 												/>
 											</div>
-
 											<div
 												className={`form-element ${
 													errors.pin
@@ -339,29 +328,27 @@ const Cart = () => {
 												/>
 											</div>
 										</div>
-									)}
-									{status === 2 && (
-										<div className="cash-on-delivery">
-											<img src={codIcon} alt="" />
-											<p>
-												The 'Cash on Delivery' option
-												enables you to pay in cash when
-												our delivery courier arrives at
-												your residence. Just make sure
-												your address is correct so that
-												your order will not be
-												cancelled.
-											</p>
-										</div>
-									)}
+									</div>
+								)}
+								{status === 2 && (
+									<div className="cash-on-delivery">
+										<img src={codIcon} alt="" />
+										<p>
+											The 'Cash on Delivery' option
+											enables you to pay in cash when our
+											delivery courier arrives at your
+											residence. Just make sure your
+											address is correct so that your
+											order will not be cancelled.
+										</p>
+									</div>
+								)}
 								{/* </div> */}
 							</div>
 						</div>
 						<div className="summary">
-							<input type="submit" />
 							{productsCount > 0 ? (
 								<>
-									<p>Items in cart:</p>
 									{cart.items.map((currentProduct, idx) => (
 										<CheckOutProduct
 											key={idx}
@@ -369,23 +356,103 @@ const Cart = () => {
 											quantity={currentProduct.quantity}
 										/>
 									))}
-
-									<h1>
-										Total: {cart.getTotalCost().toFixed(2)}
-									</h1>
-									<button>Purchase Items!</button>
-									<button
-										onClick={() => cart.deleteFromCart(id)}>
-										Remove
-									</button>
+									<div className="checkout-line products-total">
+										<p>Total</p>
+										<div className="total">
+											$ {cart.getTotalCost()}
+										</div>
+									</div>
+									<div className="checkout-line product-shipping">
+										<p>Shipping</p>
+										<div className="total">
+											$ {shipping}
+										</div>
+									</div>
+									<div className="checkout-line vat">
+										<p>VAT (included)</p>
+										<div className="total">
+											$
+											{(
+												cart.getTotalCost() *
+												(taxRate / 100)
+											).toFixed(0)}
+										</div>
+									</div>
+									<div className="checkout-line">
+										<p>Grand total</p>
+										<div className="total grand-total">
+											${cart.getTotalCost() + shipping}
+										</div>
+									</div>
+									<input
+										className="button"
+										type="submit"
+										value="Continue & pay"
+										onClick={paymentClick}
+									/>
 								</>
 							) : (
 								<div>
-									<p>Empty</p>
+									<p>
+										There is nothing in your cart at this
+										time.
+									</p>
 								</div>
 							)}
 						</div>
 					</form>
+				</div>
+				<div
+					className={`fade-out ${payment ? 'active' : ''}`}
+					onClick={closePayment}></div>
+				<div
+					className={`order-conformation ${payment ? 'active' : ''}`}>
+					<svg
+						width="64"
+						height="64"
+						xmlns="http://www.w3.org/2000/svg">
+						<g fill="none" fillRule="evenodd">
+							<circle fill="#D87D4A" cx="32" cy="32" r="32" />
+							<path
+								stroke="#FFF"
+								strokeWidth="4"
+								d="m20.754 33.333 6.751 6.751 15.804-15.803"
+							/>
+						</g>
+					</svg>
+					<div className="h2">
+						THANK YOU
+						<br />
+						FOR YOUR ORDER
+					</div>
+					<p>You will receive an email confirmation shortly.</p>
+					<div className="summary">
+						<div>
+							{cart.items.map((currentProduct, idx) => (
+								<CheckOutProduct
+									key={idx}
+									id={currentProduct.id}
+									quantity={currentProduct.quantity}
+								/>
+							))}
+							{productsCount > 1 ? (
+								<div className="products-count">
+									and {productsCount - 1} other items
+								</div>
+							) : (
+								<></>
+							)}
+						</div>
+						<div className="checkout-line">
+							<p>Grand total</p>
+							<div className="total grand-total">
+								${cart.getTotalCost() + shipping}
+							</div>
+						</div>
+					</div>
+					<Link className="button" to="/">
+						Back to Home
+					</Link>
 				</div>
 			</div>
 		</main>

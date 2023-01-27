@@ -81,6 +81,8 @@ select {
 	padding-block: 0.938em;
 	padding-inline: 1.938em;
 	transition: all var(--trans-dur);
+	border: 0;
+	cursor: pointer;
 
 	&:hover {
 		background-color: var(--clr-p-h-100);
