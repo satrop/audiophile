@@ -2,7 +2,7 @@
 
 //Hero
 .hero {
-	background: url('./assets/home/mobile/image-header.jpg') no-repeat center
+	background: url('/assets/home/mobile/image-header.jpg') no-repeat center
 		center;
 	aspect-ratio: 1 / 1.6;
 	width: 100%;
@@ -47,8 +47,8 @@
 	}
 
 	@include u.breakpoint(md) {
-		background: url('./assets/home/tablet/image-header.jpg') no-repeat
-			center center;
+		background: url('/assets/home/tablet/image-header.jpg') no-repeat center
+			center;
 		aspect-ratio: unset;
 		background-size: 100%;
 		height: 729px;
@@ -58,7 +58,7 @@
 	}
 
 	@include u.breakpoint(lg) {
-		background: url('./assets/home/desktop/image-hero.jpg') no-repeat center
+		background: url('/assets/home/desktop/image-hero.jpg') no-repeat center
 			bottom;
 		background-size: cover;
 
