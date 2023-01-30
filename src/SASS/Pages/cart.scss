@@ -67,6 +67,8 @@ body.cart {
 					caret-color: var(--clr-p-100);
 					color: rgba(#000, 0.4);
 					transition: all var(--trans-dur);
+					-webkit-appearance: none;
+					appearance: none;
 
 					&:focus {
 						color: rgba(#000, 1);
@@ -164,6 +166,7 @@ body.cart {
 		margin: 0;
 		color: currentColor;
 		width: 1.25rem;
+		height: 1.25rem;
 		aspect-ratio: 1;
 		border: 1px solid currentColor;
 		border-radius: 50%;
@@ -311,6 +314,9 @@ body.cart {
 	.button {
 		width: 100%;
 		margin-top: 2rem;
+		-webkit-appearance: none;
+		appearance: none;
+		border-radius: 0;
 
 		&:disabled {
 			opacity: 0.2;
